@@ -6,7 +6,8 @@ PATH_TXT = os.path.join(
 )
 PATH_FOR_SAVE_TXT = "C:\\Users\\EasyGod\\PycharmProjects\\PythonProject\\preparation_for_live\\data\\"
 
-#Свой вариант
+
+# Свой вариант
 def get_all_names_with_file_var1(path: str) -> str:
     """Возвращает все имена из текстового файла"""
 
@@ -33,7 +34,7 @@ def get_all_names_with_file_var1(path: str) -> str:
     return "\n".join(context_new)
 
 
-#Вариант с гуглом
+# Вариант с гуглом
 def get_all_names_with_file_var2(path: str) -> str:
     """Возвращает все имена из текстового файла"""
 
@@ -42,30 +43,31 @@ def get_all_names_with_file_var2(path: str) -> str:
         context = file.read()
         pattern = r"\b[а-я|a-z]*"
 
-        all_names = list(filter(None, re.findall(pattern, context, re.IGNORECASE)))
+        all_names: list = list(filter(None, re.findall(pattern, context, re.IGNORECASE)))
 
     return "\n".join(all_names)
 
 
-def get_sort_names_with_file(path: str):
+def get_sort_names_with_file(path: str) -> None:
     """Возвращает имена, сортируя их в алфавитном порядке и раскладывая по двум спискам ру. и анг."""
 
     with open(path, "r", encoding="utf-8") as file:
 
         context = file.read()
-        pattern_ru_names = r"\b[а-я]*"
+        pattern_ru_names = r"\b[а-я|ё]*"
         pattern_eng_names = r"\b[a-z]*"
 
-    all_ru_names = list(filter(None, re.findall(pattern_ru_names, context, re.IGNORECASE)))
+    all_ru_names: list = list(filter(None, re.findall(pattern_ru_names, context, re.IGNORECASE)))
 
-    all_eng_names = list(filter(None, re.findall(pattern_eng_names, context, re.IGNORECASE)))
+    all_eng_names: list = list(filter(None, re.findall(pattern_eng_names, context, re.IGNORECASE)))
 
-    with open(PATH_FOR_SAVE_TXT + "ru_names.txt", 'w', encoding="utf-8") as ru_names:
+    with open(PATH_FOR_SAVE_TXT + "ru_names.txt", "w", encoding="utf-8") as ru_names:
 
-        ru_names.write('\n'.join(sorted(all_ru_names)))
+        ru_names.write("\n".join(sorted(all_ru_names)))
 
-    with open(PATH_FOR_SAVE_TXT + "eng_names.txt", 'w', encoding="utf-8") as eng_names:
+    with open(PATH_FOR_SAVE_TXT + "eng_names.txt", "w", encoding="utf-8") as eng_names:
 
-        eng_names.write('\n'.join(sorted(all_eng_names)))
+        eng_names.write("\n".join(sorted(all_eng_names)))
+
 
 get_sort_names_with_file(PATH_TXT)
