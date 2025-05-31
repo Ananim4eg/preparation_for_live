@@ -5,7 +5,7 @@ PATH_FOR_SAVE_TXT = "C:\\Users\\EasyGod\\PycharmProjects\\PythonProject\\prepara
 
 
 # Свой вариант
-def get_all_names_with_file_var1(path: str) -> str:
+def get_all_names_from_file_var1(path: str) -> str:
     """Возвращает все имена из текстового файла"""
 
     with open(path, "r", encoding="utf-8") as file:
@@ -31,7 +31,7 @@ def get_all_names_with_file_var1(path: str) -> str:
 
 
 # Вариант с гуглом
-def get_all_names_with_file_var2(path: str) -> str:
+def get_all_names_from_file_var2(path: str) -> str:
     """Возвращает все имена из текстового файла"""
 
     with open(path, "r", encoding="utf-8") as file:
@@ -44,7 +44,7 @@ def get_all_names_with_file_var2(path: str) -> str:
     return "\n".join(all_names)
 
 
-def get_sort_names_with_file(path: str, mode: str | None = None) -> None:
+def get_sort_names_from_file(path: str, mode: str | None = None) -> None:
     """Возвращает имена, сортируя их в алфавитном порядке и раскладывая по двум спискам ру. или анг."""
 
     with open(path, "r", encoding="utf-8") as file:
@@ -52,17 +52,17 @@ def get_sort_names_with_file(path: str, mode: str | None = None) -> None:
         context = file.read()
 
     if mode is None:
-        get_ru_sort_names_with_file(context)
-        get_eng_sort_names_with_file(context)
+        get_ru_sort_names_from_file(context)
+        get_eng_sort_names_from_file(context)
 
     elif mode.lower() == "ru":
-        get_ru_sort_names_with_file(context)
+        get_ru_sort_names_from_file(context)
 
     elif mode.lower() == "eng":
-        get_eng_sort_names_with_file(context)
+        get_eng_sort_names_from_file(context)
 
 
-def get_ru_sort_names_with_file(my_list: str) -> None:
+def get_ru_sort_names_from_file(my_list: str) -> None:
     """Выбирает русские имена, сортирует их и записывает в файл"""
     pattern_ru_names = r"\b[а-я|ё]*"
 
@@ -72,7 +72,7 @@ def get_ru_sort_names_with_file(my_list: str) -> None:
         ru_names.write("\n".join(sorted(all_ru_names)))
 
 
-def get_eng_sort_names_with_file(my_list: str) -> None:
+def get_eng_sort_names_from_file(my_list: str) -> None:
     """Выбирает английские имена, сортирует их и записывает в файл"""
     pattern_eng_names = r"\b[a-z]*"
 
@@ -83,4 +83,4 @@ def get_eng_sort_names_with_file(my_list: str) -> None:
 
 
 # get_sort_names_with_file(PATH_TXT)
-print(get_all_names_with_file_var1(PATH_TXT))
+print(get_all_names_from_file_var1(PATH_TXT))
