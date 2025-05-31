@@ -32,7 +32,6 @@ def get_all_names_with_file_var1(path: str) -> str:
 
 # Вариант с гуглом
 def get_all_names_with_file_var2(path: str) -> str:
-
     """Возвращает все имена из текстового файла"""
 
     with open(path, "r", encoding="utf-8") as file:
