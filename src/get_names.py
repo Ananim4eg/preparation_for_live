@@ -16,17 +16,16 @@ def get_all_names_with_file_var1(path: str) -> str:
         for line in context:
 
             letters_for_del = []
-            modified_line = line
 
             for elem in line:
                 if not elem.isalpha():
                     letters_for_del.append(elem)
 
             for item in letters_for_del:
-                modified_line = modified_line.replace(item, "")
+                line = line.replace(item, "")
 
-            if len(modified_line) > 0:
-                context_new.append(modified_line)
+            if len(line):
+                context_new.append(line)
 
     return "\n".join(context_new)
 
@@ -84,4 +83,5 @@ def get_eng_sort_names_with_file(my_list: str) -> None:
         eng_names.write("\n".join(sorted(all_eng_names)))
 
 
-get_sort_names_with_file(PATH_TXT)
+# get_sort_names_with_file(PATH_TXT)
+print(get_all_names_with_file_var1(PATH_TXT))
